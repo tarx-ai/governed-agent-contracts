@@ -1,0 +1,12 @@
+{
+  "name": "@tarx/governed-agent-contracts",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Portable contracts and executable safety invariants for governed AI agent actions",
+  "scripts": {
+    "test": "node scripts/check-contracts.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

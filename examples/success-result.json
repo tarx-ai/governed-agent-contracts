@@ -1,0 +1,16 @@
+{
+  "schema": "tarx-action-result.v1",
+  "proposal_id": "prop_mutate_001",
+  "result_id": "res_success_001",
+  "completed_at": "2026-07-28T18:04:00Z",
+  "status": "succeeded",
+  "executed": true,
+  "completion_claim_allowed": true,
+  "evidence": [
+    {
+      "type": "receipt",
+      "uri": "project://tarx/contracts/tasks/42",
+      "summary": "Task 42 was created in the approved project"
+    }
+  ]
+}

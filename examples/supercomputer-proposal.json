@@ -1,0 +1,31 @@
+{
+  "schema": "tarx-action-proposal.v1",
+  "proposal_id": "prop_cloud_001",
+  "created_at": "2026-07-28T18:05:00Z",
+  "status": "proposed",
+  "intent": "Run an approved large-model evaluation",
+  "action": {
+    "name": "evaluation.run",
+    "summary": "Evaluate the approved dataset with the selected cloud model",
+    "input": {
+      "dataset_ref": "dataset://approved/eval-v1"
+    }
+  },
+  "grounding": {
+    "target": "evaluation:eval-v1",
+    "observed_at": "2026-07-28T18:04:58Z",
+    "confidence": 0.98
+  },
+  "risk": {
+    "level": "high",
+    "mutation": false,
+    "external_side_effect": true,
+    "requires_confirmation": true,
+    "reasons": ["Uses an external model route", "May incur cost"]
+  },
+  "route": {
+    "runtime": "supercomputer",
+    "approved": true,
+    "reason": "Explicitly approved evaluation route"
+  }
+}

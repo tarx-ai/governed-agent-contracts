@@ -1,0 +1,31 @@
+{
+  "schema": "tarx-action-proposal.v1",
+  "proposal_id": "prop_mutate_001",
+  "created_at": "2026-07-28T18:01:00Z",
+  "status": "proposed",
+  "intent": "Create a project task after the user confirms",
+  "action": {
+    "name": "project.task.create",
+    "summary": "Create one task in the selected project",
+    "input": {
+      "title": "Verify the governed action contract"
+    }
+  },
+  "grounding": {
+    "target": "project:tarx/contracts",
+    "observed_at": "2026-07-28T18:00:59Z",
+    "confidence": 0.99
+  },
+  "risk": {
+    "level": "medium",
+    "mutation": true,
+    "external_side_effect": true,
+    "requires_confirmation": true,
+    "reasons": ["Creates externally visible project state"]
+  },
+  "route": {
+    "runtime": "private",
+    "approved": true,
+    "reason": "Customer-managed project system"
+  }
+}

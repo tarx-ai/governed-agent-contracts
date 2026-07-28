@@ -1,0 +1,13 @@
+{
+  "schema": "tarx-action-decision.v1",
+  "proposal_id": "prop_blocked_001",
+  "decision_id": "dec_policy_001",
+  "decided_at": "2026-07-28T18:03:00Z",
+  "decision": "blocked",
+  "actor": {
+    "type": "policy",
+    "id": "policy:credential-boundary.v1"
+  },
+  "reason": "The proposal contains an embedded credential",
+  "conditions": []
+}

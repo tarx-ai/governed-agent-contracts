@@ -1,0 +1,13 @@
+{
+  "schema": "tarx-action-decision.v1",
+  "proposal_id": "prop_mutate_001",
+  "decision_id": "dec_human_001",
+  "decided_at": "2026-07-28T18:02:00Z",
+  "decision": "approved",
+  "actor": {
+    "type": "human",
+    "id": "user:example"
+  },
+  "reason": "The user confirmed the exact target and mutation",
+  "conditions": ["Execute once", "Do not create additional tasks"]
+}
