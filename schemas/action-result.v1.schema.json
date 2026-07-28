@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://tarx.com/schemas/action-result.v1.schema.json",
+  "title": "Governed Agent Action Result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "proposal_id",
+    "result_id",
+    "completed_at",
+    "status",
+    "executed",
+    "completion_claim_allowed",
+    "evidence"
+  ],
+  "properties": {
+    "schema": {
+      "const": "tarx-action-result.v1"
+    },
+    "proposal_id": {
+      "type": "string",
+      "pattern": "^prop_[A-Za-z0-9_-]{8,}$"
+    },
+    "result_id": {
+      "type": "string",
+      "pattern": "^res_[A-Za-z0-9_-]{8,}$"
+    },
+    "completed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["succeeded", "failed", "blocked", "cancelled"]
+    },
+    "executed": {
+      "type": "boolean"
+    },
+    "completion_claim_allowed": {
+      "type": "boolean"
+    },
+    "reason": {
+      "type": "string"
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["type", "uri", "summary"],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": ["tool_result", "receipt", "diff", "log", "observation"]
+          },
+          "uri": {
+            "type": "string",
+            "minLength": 1
+          },
+          "summary": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        }
+      }
+    }
+  }
+}

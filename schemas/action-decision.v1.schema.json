@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://tarx.com/schemas/action-decision.v1.schema.json",
+  "title": "Governed Agent Action Decision",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "proposal_id",
+    "decision_id",
+    "decided_at",
+    "decision",
+    "actor",
+    "reason"
+  ],
+  "properties": {
+    "schema": {
+      "const": "tarx-action-decision.v1"
+    },
+    "proposal_id": {
+      "type": "string",
+      "pattern": "^prop_[A-Za-z0-9_-]{8,}$"
+    },
+    "decision_id": {
+      "type": "string",
+      "pattern": "^dec_[A-Za-z0-9_-]{8,}$"
+    },
+    "decided_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "decision": {
+      "type": "string",
+      "enum": ["approved", "rejected", "blocked"]
+    },
+    "actor": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "id"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["human", "policy"]
+        },
+        "id": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "reason": {
+      "type": "string",
+      "minLength": 1
+    },
+    "conditions": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    }
+  }
+}

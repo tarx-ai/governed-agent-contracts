@@ -1,0 +1,11 @@
+{
+  "schema": "tarx-action-result.v1",
+  "proposal_id": "prop_blocked_001",
+  "result_id": "res_blocked_001",
+  "completed_at": "2026-07-28T18:03:01Z",
+  "status": "blocked",
+  "executed": false,
+  "completion_claim_allowed": false,
+  "reason": "Credential boundary policy rejected the proposal",
+  "evidence": []
+}

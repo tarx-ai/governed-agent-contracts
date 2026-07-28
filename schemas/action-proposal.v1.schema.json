@@ -1,0 +1,135 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://tarx.com/schemas/action-proposal.v1.schema.json",
+  "title": "Governed Agent Action Proposal",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "proposal_id",
+    "created_at",
+    "status",
+    "intent",
+    "action",
+    "grounding",
+    "risk",
+    "route"
+  ],
+  "properties": {
+    "schema": {
+      "const": "tarx-action-proposal.v1"
+    },
+    "proposal_id": {
+      "type": "string",
+      "pattern": "^prop_[A-Za-z0-9_-]{8,}$"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "status": {
+      "const": "proposed"
+    },
+    "intent": {
+      "type": "string",
+      "minLength": 1
+    },
+    "action": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "summary", "input"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_.-]+$"
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1
+        },
+        "input": {
+          "type": "object"
+        }
+      }
+    },
+    "grounding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["target", "observed_at", "confidence"],
+      "properties": {
+        "target": {
+          "type": "string",
+          "minLength": 1
+        },
+        "observed_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "bounds": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["x", "y", "width", "height"],
+          "properties": {
+            "x": { "type": "number" },
+            "y": { "type": "number" },
+            "width": { "type": "number", "exclusiveMinimum": 0 },
+            "height": { "type": "number", "exclusiveMinimum": 0 }
+          }
+        }
+      }
+    },
+    "risk": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "level",
+        "mutation",
+        "external_side_effect",
+        "requires_confirmation",
+        "reasons"
+      ],
+      "properties": {
+        "level": {
+          "type": "string",
+          "enum": ["read_only", "low", "medium", "high", "blocked"]
+        },
+        "mutation": {
+          "type": "boolean"
+        },
+        "external_side_effect": {
+          "type": "boolean"
+        },
+        "requires_confirmation": {
+          "type": "boolean"
+        },
+        "reasons": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "minItems": 1
+        }
+      }
+    },
+    "route": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["runtime", "approved"],
+      "properties": {
+        "runtime": {
+          "type": "string",
+          "enum": ["computer", "private", "supercomputer"]
+        },
+        "approved": {
+          "type": "boolean"
+        },
+        "reason": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

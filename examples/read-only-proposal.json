@@ -1,0 +1,29 @@
+{
+  "schema": "tarx-action-proposal.v1",
+  "proposal_id": "prop_read_001",
+  "created_at": "2026-07-28T18:00:00Z",
+  "status": "proposed",
+  "intent": "Inspect the current runtime health",
+  "action": {
+    "name": "tarx.health.read",
+    "summary": "Read local service health without changing state",
+    "input": {}
+  },
+  "grounding": {
+    "target": "http://127.0.0.1:11435/health",
+    "observed_at": "2026-07-28T18:00:00Z",
+    "confidence": 1
+  },
+  "risk": {
+    "level": "read_only",
+    "mutation": false,
+    "external_side_effect": false,
+    "requires_confirmation": false,
+    "reasons": ["Local read-only health request"]
+  },
+  "route": {
+    "runtime": "computer",
+    "approved": true,
+    "reason": "Local endpoint"
+  }
+}
