@@ -1,0 +1,17 @@
+{
+  "schema": "tarx-action-result.v1",
+  "proposal_id": "prop_ent_deny_001",
+  "result_id": "res_ent_deny_001",
+  "completed_at": "2026-07-29T20:12:05Z",
+  "status": "blocked",
+  "executed": false,
+  "completion_claim_allowed": false,
+  "reason": "Policy denied route before execution",
+  "evidence": [
+    {
+      "type": "observation",
+      "uri": "policy://tarx/route/deny",
+      "summary": "Policy router denied placement; no execution started"
+    }
+  ]
+}

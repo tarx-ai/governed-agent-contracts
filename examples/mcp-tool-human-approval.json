@@ -1,0 +1,13 @@
+{
+  "schema": "tarx-action-decision.v1",
+  "proposal_id": "prop_mcp_tool_001",
+  "decision_id": "dec_mcp_tool_001",
+  "decided_at": "2026-07-29T20:00:30Z",
+  "decision": "approved",
+  "actor": {
+    "type": "human",
+    "id": "user.operator"
+  },
+  "reason": "Operator confirmed the MCP issue title and repository scope",
+  "conditions": ["Create exactly one issue", "Do not assign reviewers"]
+}
