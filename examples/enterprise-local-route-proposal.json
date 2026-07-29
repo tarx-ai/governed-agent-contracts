@@ -1,0 +1,35 @@
+{
+  "schema": "tarx-action-proposal.v1",
+  "proposal_id": "prop_ent_local_001",
+  "created_at": "2026-07-29T20:10:00Z",
+  "status": "proposed",
+  "intent": "Summarize confidential field notes without leaving the device",
+  "action": {
+    "name": "enterprise.local.summarize",
+    "summary": "Run a local inference summary over a confidential document set",
+    "input": {
+      "document_set": "docs://local/confidential-notes-batch",
+      "sensitivity": "confidential"
+    }
+  },
+  "grounding": {
+    "target": "docs://local/confidential-notes-batch",
+    "observed_at": "2026-07-29T20:09:50Z",
+    "confidence": 0.96
+  },
+  "risk": {
+    "level": "high",
+    "mutation": false,
+    "external_side_effect": false,
+    "requires_confirmation": true,
+    "reasons": [
+      "Confidential classification",
+      "Must remain on Computer plane"
+    ]
+  },
+  "route": {
+    "runtime": "computer",
+    "approved": true,
+    "reason": "Policy maps confidential work to Computer by default; Supercomputer not authorized"
+  }
+}

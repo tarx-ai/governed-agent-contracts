@@ -1,0 +1,16 @@
+{
+  "schema": "tarx-action-result.v1",
+  "proposal_id": "prop_mcp_tool_001",
+  "result_id": "res_mcp_tool_001",
+  "completed_at": "2026-07-29T20:00:45Z",
+  "status": "succeeded",
+  "executed": true,
+  "completion_claim_allowed": true,
+  "evidence": [
+    {
+      "type": "tool_result",
+      "uri": "github://issues/42",
+      "summary": "Issue created after governed approval"
+    }
+  ]
+}

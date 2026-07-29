@@ -37,7 +37,8 @@ The public draft contains:
   approved, rejected, or blocked the proposal
 - [`action-result.v1`](schemas/action-result.v1.schema.json) — execution status
   and evidence required before a completion claim
-- [Examples](examples) — read-only, mutating, blocked, and successful paths
+- [Examples](examples) — read-only, mutating, blocked, successful, MCP, and
+  enterprise-route paths
 - [Executable invariants](scripts/check-contracts.mjs) — dependency-free checks
   for rules JSON Schema alone should not be trusted to communicate
 
@@ -55,6 +56,24 @@ These contracts are deliberately model-agnostic and transport-agnostic. They
 can wrap a local tool, MCP server, browser action, enterprise workflow, or
 approved cloud agent.
 
+## Fixture map (scannable proofs)
+
+| Scenario | Proposal | Decision / Result |
+| --- | --- | --- |
+| Read-only Computer work | `read-only-proposal.json` | — |
+| Mutating private workflow | `mutation-proposal.json` | `human-approval.json` → `success-result.json` |
+| Explicit Supercomputer route | `supercomputer-proposal.json` | must set `route.approved: true` |
+| Policy block | `policy-block.json` | `blocked-result.json` |
+| **MCP tool mutation** | `mcp-tool-mutation-proposal.json` | `mcp-tool-human-approval.json` → `mcp-tool-success-result.json` |
+| **Enterprise confidential → Computer** | `enterprise-local-route-proposal.json` | Computer default, no silent cloud |
+| **Enterprise policy deny** | `enterprise-policy-deny-proposal.json` | `enterprise-policy-deny-result.json` |
+
+Related product proofs:
+
+- [TARX CLI](https://github.com/tarx-ai/tarx-cli) — `tarx route check local`, MCP host fixtures
+- [Palantir AIP × local-first](https://github.com/wantzjt/palantir-aip-local-first) — maps Foundry/local/deny onto TARX runtimes
+- [TARX Desktop](https://github.com/tarx-ai/tarx-desktop) — Computer-canonical Mac beta
+
 ## Run the checks
 
 Requires Node.js 20 or later and has no package dependencies.
@@ -66,7 +85,7 @@ npm test
 Expected output:
 
 ```text
-8 contract fixtures passed
+14 contract fixtures passed
 ```
 
 ## Architecture boundary
